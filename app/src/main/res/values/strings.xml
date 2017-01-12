@@ -3,4 +3,9 @@
     <string name="target_loc">Search for desired location</string>
     <string name="fab">History</string>
     <string name="start">Start</string>
+    <string name="stop">Stop</string>
+    <string name="location_pic">Location Icon</string>
+    <string name="widget_title">GPS TRACKER - HISTORY</string>
+    <string name="empty">NO HISTORY AVAILABLE</string>
+    <string name="search">Enter Location Here</string>
 </resources>

@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/app_name"
             android:layout_gravity="center"
-            android:text="GPS TRACKER - HISTORY"
+            android:text="@string/widget_title"
             />
     </FrameLayout>
     <FrameLayout
@@ -38,7 +38,7 @@
             android:gravity="center"
             android:fontFamily="sans-serif-condensed"
             android:textAppearance="?android:textAppearanceLarge"
-            android:text="No history available"/>
+            android:text="@string/empty"/>
     </FrameLayout>
 
 </LinearLayout>

@@ -28,12 +28,14 @@
                 android:id="@+id/sirPhoto"
                 android:layout_margin="2dp"
                 android:src="@drawable/map_location"
-                android:layout_centerVertical="true" />
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/location_pic"/>
             <TextView
                 android:id="@+id/tvLocation"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/sirPhoto"
+                android:layout_toEndOf="@+id/sirPhoto"
                 android:layout_margin="20dp"
                 android:textSize="22sp"
                 tools:text="Location"/>
@@ -43,6 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvLocation"
                 android:layout_alignLeft="@id/tvLocation"
+                android:layout_alignStart="@+id/tvLocation"
                 android:layout_margin="2dp"
                 android:textSize="20sp"
                 tools:text="Date"/>
