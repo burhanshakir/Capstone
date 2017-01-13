@@ -8,4 +8,9 @@
     <string name="widget_title">GPS TRACKER - HISTORY</string>
     <string name="empty">NO HISTORY AVAILABLE</string>
     <string name="search">Enter Location Here</string>
+    <string name="error">No Location Found</string>
+    <string name="distance">Within 1km of</string>
+    <string name="eal">Enter a location..</string>
+    <string name="pd">Permission denied</string>
+    <string name="key">key=AIzaSyDD3ufM52fNack4Slc4NFeKe-i-zEwnce0</string>
 </resources>

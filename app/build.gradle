@@ -5,7 +5,7 @@ android {
         config {
             keyAlias 'Gps'
             keyPassword 'beyblade'
-            storeFile file('C:/Users/burha/GPSTrackerKey.jks')
+            storeFile file('..app/GPSTrackerKey.jks')
             storePassword 'beyblade'
         }
     }

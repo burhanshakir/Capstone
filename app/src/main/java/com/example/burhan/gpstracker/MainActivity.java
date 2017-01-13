@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             current.setText(address);
 
         } else
-            Toast.makeText(this, "No Location found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -255,7 +255,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                                 new NotificationCompat.Builder(this)
                                         .setSmallIcon(R.drawable.map_location)
                                         .setContentTitle("GPS Tracker")
-                                        .setContentText("Within 1km of " + t);
+                                        .setContentText(R.string.distance + t);
 
                         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                         notificationManager.notify(123, mBuilder.build());
@@ -268,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     }
                 }
             } else
-                Toast.makeText(MainActivity.this, "Enter a location..", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, R.string.eal, Toast.LENGTH_SHORT).show();
         } else {
             targetLoc.reset();
 
@@ -364,7 +364,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
                 } else {
 
-                    Toast.makeText(this, "permission denied", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this,R.string.pd, Toast.LENGTH_LONG).show();
                 }
                 return;
             }
@@ -435,7 +435,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                         new NotificationCompat.Builder(MainActivity.this)
                                 .setSmallIcon(R.drawable.map_location)
                                 .setContentTitle("GPS Tracker")
-                                .setContentText("Within 1km of " + t);
+                                .setContentText(R.string.distance + t);
 
                 NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
                 notificationManager.notify(123, mBuilder.build());
@@ -445,8 +445,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 button.setText(R.string.start);
                 button.setContentDescription("Start");
             }
-        } else
-            Toast.makeText(this, "No Location found", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, R.string.error, Toast.LENGTH_SHORT).show();
+            button.setEnabled(false);
+        }
 
     }
 
