@@ -20,7 +20,7 @@ public class DetailWidgetRemoteViewsService extends RemoteViewsService {
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
         return new RemoteViewsFactory() {
             private Cursor data = null;
-            String URL = "content://com.example.burhan.gpstracker.database/history";
+            String URL = getResources().getString(R.string.URL);
 
             Uri uri = Uri.parse(URL);
 

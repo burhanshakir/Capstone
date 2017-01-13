@@ -98,25 +98,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         ButterKnife.bind(this);
 
-        /*target = (PlaceAutocompleteFragment)
-                getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
-        target.setOnPlaceSelectedListener(new PlaceSelectionListener() {
-            @Override
-            public void onPlaceSelected(Place place) {
-                // TODO: Get info about the selected place.
-                Log.i("Place", "Place: " + place.getName());
-
-                t = String.valueOf(place.getAddress());
-                targetLocation = String.valueOf(place.getName());
-            }
-
-            @Override
-            public void onError(Status status) {
-                // TODO: Handle the error.
-                Log.i("Place", "An error occurred: " + status);
-            }
-        });*/
-
         atvPlaces = (AutoCompleteTextView) findViewById(R.id.atv_places);
         atvPlaces.setThreshold(1);
 
@@ -215,12 +196,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
             t = atvPlaces.getText().toString();
             targetLocation = atvPlaces.getText().toString();
-            Toast.makeText(this,targetLocation, Toast.LENGTH_SHORT).show();
 
             if (!t.isEmpty() && t != null) {
                 flag++;
                 button.setText(R.string.stop);
-                button.setContentDescription("Stop");
+                button.setContentDescription(getResources().getString(R.string.stop));
 
                 ContentValues values = new ContentValues();
                 values.put(FeedReaderDbHelper.KEY_LOCATION,targetLocation);
@@ -247,14 +227,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
                     distance = currentLoc.distanceTo(targetLoc);
 
-                    //Toast.makeText(MainActivity.this, "Lat:"+targetLat+",Long:"+targetLong, Toast.LENGTH_LONG).show();
-                    //Toast.makeText(MainActivity.this, "Distance:" + distance, Toast.LENGTH_LONG).show();
-
                     if (distance <= 1000) {
                         NotificationCompat.Builder mBuilder =
                                 new NotificationCompat.Builder(this)
                                         .setSmallIcon(R.drawable.map_location)
-                                        .setContentTitle("GPS Tracker")
+                                        .setContentTitle(getResources().getString(R.string.app_name))
                                         .setContentText(R.string.distance + t);
 
                         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -264,7 +241,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                         stopLocationUpdates();
                         flag = 0;
                         button.setText(R.string.start);
-                        button.setContentDescription("Start");
+                        button.setContentDescription(getResources().getString(R.string.start));
                     }
                 }
             } else
@@ -272,20 +249,6 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         } else {
             targetLoc.reset();
 
-            /*String URL = "content://com.example.burhan.gpstracker.database/history";
-
-            Uri uri = Uri.parse(URL);
-            Cursor c = managedQuery(uri, null, null, null, "id");
-
-            if (c.moveToFirst()) {
-                do{
-                    Toast.makeText(this,
-                            c.getString(c.getColumnIndex(FeedReaderDbHelper.KEY_ID)) +
-                                    ", " +  c.getString(c.getColumnIndex(FeedReaderDbHelper.KEY_LOCATION)) +
-                                    ", " + c.getString(c.getColumnIndex(FeedReaderDbHelper.KEY_DATE)),
-                            Toast.LENGTH_SHORT).show();
-                } while (c.moveToNext());
-            }*/
             finish();
         }
     }
@@ -293,13 +256,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     private void startLocationUpdates() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             return;
         }
         LocationServices.FusedLocationApi.requestLocationUpdates(
@@ -403,13 +360,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public void onLocationChanged(Location location) {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
+
             return;
         }
         currentLoc = LocationServices.FusedLocationApi.getLastLocation(
@@ -434,7 +385,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 NotificationCompat.Builder mBuilder =
                         new NotificationCompat.Builder(MainActivity.this)
                                 .setSmallIcon(R.drawable.map_location)
-                                .setContentTitle("GPS Tracker")
+                                .setContentTitle(getResources().getString(R.string.app_name))
                                 .setContentText(R.string.distance + t);
 
                 NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
@@ -443,7 +394,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 stopLocationUpdates();
                 flag = 0;
                 button.setText(R.string.start);
-                button.setContentDescription("Start");
+                button.setContentDescription(getResources().getString(R.string.start));
             }
         } else {
             Toast.makeText(this, R.string.error, Toast.LENGTH_SHORT).show();
@@ -497,7 +448,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             String data = "";
 
             // Obtain browser key from https://code.google.com/apis/console
-            String key = "key=AIzaSyDD3ufM52fNack4Slc4NFeKe-i-zEwnce0";
+            String key = getResources().getString(R.string.key);
 
             String input="";
 
